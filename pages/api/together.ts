@@ -21,19 +21,14 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response('No prompt in the request', { status: 400 });
   }
 
-  const stream = await together.inference(
-    'mistralai/Mistral-7B-Instruct-v0.1',
-    {
-      prompt: prompt + ' Reply in markdown.',
-      max_tokens: 1000,
-      stream_tokens: true,
-    }
-  );
+  const stream = await together.inference('togethercomputer/llama-2-70b-chat', {
+    prompt: prompt + ' Reply in markdown.',
+    max_tokens: 1000,
+    stream_tokens: true,
+  });
 
-  // return stream response (SSE)
   return new Response(stream as ReadableStream, {
     headers: new Headers({
-      // 'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
     }),
   });

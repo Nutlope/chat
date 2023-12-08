@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import Github from './GitHub';
 
 export default function Header() {
   return (
@@ -7,27 +8,23 @@ export default function Header() {
       <Link href="/" className="flex space-x-3">
         <Image
           alt="header text"
-          src="/writingIcon.png"
-          className="sm:w-12 sm:h-12 w-8 h-8"
-          width={32}
-          height={32}
+          src="/chat.png"
+          className="sm:w-10 sm:h-10 w-7 h-7"
+          width={24}
+          height={24}
         />
-        <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">
-          twitterbio.io
+        <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
+          Simple Chat App
         </h1>
       </Link>
       <a
-        href="https://vercel.com/templates/next.js/twitter-bio"
+        className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100"
+        href="https://github.com/Nutlope/chat"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
-        <Image
-          alt="Vercel Icon"
-          src="/vercelLogo.png"
-          className="sm:w-8 sm:h-[27px] w-8 h-[28px]"
-          width={32}
-          height={28}
-        />
+        <Github />
+        <p>Star on GitHub</p>
       </a>
     </header>
   );

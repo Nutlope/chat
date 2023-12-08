@@ -1,4 +1,4 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   render() {
@@ -8,27 +8,27 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Generate your next Twitter bio in seconds."
+            content="AI Chat powered by Llama 70B and Together.ai."
           />
-          <meta property="og:site_name" content="twitterbio.io" />
+          <meta property="og:site_name" content="llama-chat.vercel.app" />
           <meta
             property="og:description"
-            content="Generate your next Twitter bio in seconds."
+            content="AI Chat powered by Llama 70B and Together.ai."
           />
           <meta property="og:title" content="Twitter Bio Generator" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Twitter Bio Generator" />
           <meta
             name="twitter:description"
-            content="Generate your next Twitter bio in seconds."
+            content="AI Chat powered by Llama 70B and Together.ai."
           />
           <meta
             property="og:image"
-            content="https://twitterbio.io/og-image.png"
+            content="https://llama-chat.vercel.app/og-image.png"
           />
           <meta
             name="twitter:image"
-            content="https://twitterbio.io/og-image.png"
+            content="https://llama-chat.vercel.app/og-image.png"
           />
         </Head>
         <body>
