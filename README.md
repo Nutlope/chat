@@ -18,11 +18,19 @@ Then, run the application in the command line and it will be available at `http:
 npm run dev
 ```
 
-# Future v2
+# Version 2 (future)
 
-For version 2 of this app, here is some of the inspiration and features I want to ship
+For version 2 of this app, here are some features I want to add:
 
-Inspo:
+- [ ] Auth with Clerk.
+- [ ] Header with profile pic + name + clone github on the right. On the left, select item to pick what model to use (mistral, Llama, ect...).
+- [ ] Share and Rewrite buttons like Perplexity.
+- [ ] No sidebar. Just chatbox on the bottom similar to chatGPT or Pi with a disclaimer.
+- [ ] Search by pressing enter in the text box.
+- [ ] Migrate app to the Next.js app router.
+- [ ] Make sure the app scrolls as the text comes in.
+
+Get inspo from:
 
 - https://chat.openai.com/
 - https://chat.vercel.ai/
@@ -30,13 +38,3 @@ Inspo:
 - https://pi.ai/talk
 - https://poe.com/
 - https://claude.ai/chats
-
-Features I want to add:
-
-- Auth with Clerk.
-- Header with profile pic + name + clone github on the right. On the left, select item to pick what model to use (mistral, Llama, ect...).
-- Share and Rewrite buttons like Perplexity.
-- No sidebar. Just chatbox on the bottom similar to chatGPT or Pi with a disclaimer.
-- Search by pressing enter in the text box.
-- Migrate app to the Next.js app router.
-- Make sure the app scrolls as the text comes in.
