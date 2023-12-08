@@ -10,7 +10,7 @@ class MyDocument extends Document {
             name="description"
             content="AI Chat powered by Llama 70B and Together.ai."
           />
-          <meta property="og:site_name" content="llama-chat.vercel.app" />
+          <meta property="og:site_name" content="simple-ai-chat.vercel.app" />
           <meta
             property="og:description"
             content="AI Chat powered by Llama 70B and Together.ai."
@@ -24,11 +24,11 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://llama-chat.vercel.app/og-image.png"
+            content="https://simple-ai-chat.vercel.app/og-image.png"
           />
           <meta
             name="twitter:image"
-            content="https://llama-chat.vercel.app/og-image.png"
+            content="https://simple-ai-chat.vercel.app/og-image.png"
           />
         </Head>
         <body>
