@@ -4,28 +4,30 @@ if (!process.env.TOGETHER_API_KEY) {
   throw new Error('Missing env var from Together.ai');
 }
 
-export const config = {
-  runtime: 'edge',
-};
-
 const together = new Together({
   auth: process.env.TOGETHER_API_KEY,
 });
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt } = (await req.json()) as {
-    prompt?: string;
-  };
+  const { prompt } = (await req.json()) as { prompt?: string };
 
   if (!prompt) {
     return new Response('No prompt in the request', { status: 400 });
   }
 
-  const stream = await together.inference('togethercomputer/llama-2-70b-chat', {
-    prompt: prompt + ' Reply in markdown.',
-    max_tokens: 1000,
-    stream_tokens: true,
-  });
+  const stream = await together.inference(
+    'mistralai/Mixtral-8x7B-Instruct-v0.1',
+    {
+      messages: [
+        {
+          role: 'user',
+          content: `${prompt} Reply in markdown.`,
+        },
+      ],
+      max_tokens: 512,
+      stream_tokens: true,
+    }
+  );
 
   return new Response(stream as ReadableStream, {
     headers: new Headers({
@@ -34,4 +36,5 @@ const handler = async (req: Request): Promise<Response> => {
   });
 };
 
+export const config = { runtime: 'edge' };
 export default handler;

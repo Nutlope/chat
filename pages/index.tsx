@@ -5,12 +5,8 @@ import { Toaster } from 'react-hot-toast';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import LoadingDots from '../components/LoadingDots';
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from 'eventsource-parser';
 import ReactMarkdown from 'react-markdown';
+import frontendStream from '../utils/frontendStream';
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +25,7 @@ const Home: NextPage = () => {
     e.preventDefault();
     setLlmResponse('');
     setLoading(true);
+
     const response = await fetch('/api/together', {
       method: 'POST',
       headers: {
@@ -44,38 +41,7 @@ const Home: NextPage = () => {
     }
 
     // This data is a ReadableStream
-    const data = response.body;
-    if (!data) {
-      return;
-    }
-
-    const onParse = (event: ParsedEvent | ReconnectInterval) => {
-      if (event.type === 'event') {
-        const data = event.data;
-        if (data === '[DONE]') {
-          return;
-        }
-        try {
-          const text = JSON.parse(data).choices[0].text ?? '';
-          console.log({ text });
-          setLlmResponse((prev) => prev + text);
-        } catch (e) {
-          console.error(e);
-        }
-      }
-    };
-
-    // https://web.dev/streams/#the-getreader-and-read-methods
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    const parser = createParser(onParse);
-    let done = false;
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value);
-      parser.feed(chunkValue);
-    }
+    await frontendStream({ data: response.body, setLlmResponse });
     scrollToEnd();
     setLoading(false);
   };
