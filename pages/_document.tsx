@@ -8,19 +8,19 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="AI Chat powered by Llama 70B and Together.ai."
+            content="AI Chat powered by Mixtral MOE and Together.ai."
           />
           <meta property="og:site_name" content="simple-ai-chat.vercel.app" />
           <meta
             property="og:description"
-            content="AI Chat powered by Llama 70B and Together.ai."
+            content="AI Chat powered by Mixtral MOE and Together.ai."
           />
           <meta property="og:title" content="Twitter Bio Generator" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Twitter Bio Generator" />
           <meta
             name="twitter:description"
-            content="AI Chat powered by Llama 70B and Together.ai."
+            content="AI Chat powered by Mixtral MOE and Together.ai."
           />
           <meta
             property="og:image"

@@ -12,8 +12,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [llmResponse, setLlmResponse] = useState<string>('');
-
-  const answerRef = useRef<null | HTMLDivElement>(null);
+  const answerRef = useRef<null | HTMLButtonElement>(null);
 
   const scrollToEnd = () => {
     if (answerRef.current !== null) {
@@ -103,12 +102,13 @@ const Home: NextPage = () => {
         <div className="space-y-10 my-10 max-w-7xl">
           {llmResponse && (
             <>
-              <div ref={answerRef} className="text-left">
+              <div className="text-left">
                 <ReactMarkdown className="prose">{llmResponse}</ReactMarkdown>
               </div>
               <button
                 className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-3 mt-5 hover:bg-black/80 w-full"
                 onClick={resetAndScroll}
+                ref={answerRef}
               >
                 Ask another question
               </button>

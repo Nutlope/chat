@@ -1,12 +1,12 @@
 # Chat app
 
-A simple Next.js chat app that uses Llama 70B through Together.ai. It shows off how to do streaming with open source LLMs using Next.js and Together.ai.
+A simple Next.js chat app that uses Mixtral MOE through Together.ai. It shows off how to do streaming with open source LLMs using Next.js and Together.ai.
 
 [![Simple Chat app](./public/screenshot.png)](https://simple-ai-chat.vercel.app)
 
 ## How it works
 
-This project uses Llama 70B through [Together.ai's serverless endpoints](https://docs.together.ai/docs/inference-models) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It takes the prompt the user specifies, sends it to Llama 70B via a Together serverless endpoint, then streams the response back to the application.
+This project uses Mixtral MOE through [Together.ai's serverless endpoints](https://docs.together.ai/docs/inference-models) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It takes the prompt the user specifies, sends it to Mixtral MOE via a Together serverless endpoint, then streams the response back to the application.
 
 ## Running Locally
 
