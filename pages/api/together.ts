@@ -14,9 +14,7 @@ const handler = async (req: Request): Promise<Response> => {
 
   const runner = together.chat.completions.stream({
     model: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-    messages: [
-      { role: "user", content: "tell me about nyc, respond in markdown" },
-    ],
+    messages: [{ role: "user", content: prompt }],
   });
 
   return new Response(runner.toReadableStream());

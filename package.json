@@ -12,14 +12,14 @@
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.10",
     "eventsource-parser": "^0.0.5",
-    "next": "latest",
+    "next": "14.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",
     "react-hot-toast": "^2.4.0",
     "react-markdown": "^9.0.1",
     "react-use-measure": "^2.1.1",
-    "together-ai": "^0.6.0"
+    "together-ai": "^0.7.0"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
