@@ -1,34 +1,34 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useRef, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import LoadingDots from '../components/LoadingDots';
-import ReactMarkdown from 'react-markdown';
-import frontendStream from '../utils/frontendStream';
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useRef, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import LoadingDots from "../components/LoadingDots";
+import ReactMarkdown from "react-markdown";
+import { ChatCompletionStream } from "together-ai/lib/ChatCompletionStream";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
-  const [prompt, setPrompt] = useState('');
-  const [llmResponse, setLlmResponse] = useState<string>('');
+  const [prompt, setPrompt] = useState("");
+  const [llmResponse, setLlmResponse] = useState<string>("");
   const answerRef = useRef<null | HTMLButtonElement>(null);
 
   const scrollToEnd = () => {
     if (answerRef.current !== null) {
-      answerRef.current.scrollIntoView({ behavior: 'smooth' });
+      answerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const generateResponse = async (e: any) => {
     e.preventDefault();
-    setLlmResponse('');
+    setLlmResponse("");
     setLoading(true);
 
-    const response = await fetch('/api/together', {
-      method: 'POST',
+    const response = await fetch("/api/together", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         prompt,
@@ -39,15 +39,16 @@ const Home: NextPage = () => {
       throw new Error(response.statusText);
     }
 
-    // This data is a ReadableStream
-    await frontendStream({ data: response.body, setLlmResponse });
+    const runner = ChatCompletionStream.fromReadableStream(response.body!);
+    runner.on("content", (delta) => setLlmResponse((prev) => prev + delta));
+
     scrollToEnd();
     setLoading(false);
   };
 
   const resetAndScroll = () => {
-    setPrompt('');
-    setLlmResponse('');
+    setPrompt("");
+    setLlmResponse("");
     window.scrollTo(0, 0);
   };
 
@@ -73,7 +74,7 @@ const Home: NextPage = () => {
             rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
             placeholder={
-              'e.g. Tell me about some cool family friendly activities.'
+              "e.g. Tell me about some cool family friendly activities."
             }
           />
           {!loading && (
